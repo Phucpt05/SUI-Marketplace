@@ -9,15 +9,15 @@ module awesome_nft::awesome_nft {
     use awesome_nft::awesome_extension;
 
     public struct MintCap has key, store {
-        id: UID,
+        id: UID
     }
 
     public struct AwesomeNFT has key, store {
         id: UID,
         name: String,
         description: String,
-        url: Url,
-        creator: Address
+        img_url: String,
+        creator: String
     }
 
     public struct AWESOME_NFT has drop {}
@@ -33,7 +33,8 @@ module awesome_nft::awesome_nft {
         _: &MintCap,
         name: String,
         description: String,
-        url: Url,
+        img_url: String,
+        creator: String,
         kiosk: &mut Kiosk,
         policy: &TransferPolicy<AwesomeNFT>,
         ctx: &mut TxContext
@@ -44,8 +45,8 @@ module awesome_nft::awesome_nft {
                 id: object::new(ctx),
                 name,
                 description,
-                url,
-                creator: ctx.sender(),
+                img_url,
+                creator
             },
             policy
         );
@@ -56,7 +57,7 @@ module awesome_nft::awesome_nft {
             id,
             name: _,
             description: _,
-            url: _,
+            img_url: _,
             creator: _
         } = nft;
         id.delete();
