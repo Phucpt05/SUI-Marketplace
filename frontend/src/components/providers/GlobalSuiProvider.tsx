@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@mysten/dapp-kit/dist/index.css";
 import { networkConfig } from "../../config/networkConfig";
 import { useEffect } from "react";
+import { KioskProvider } from "./KioskProvider";
 
 // Config options for the networks you want to connect to
 
@@ -25,7 +26,9 @@ export function GlobalSuiProvider({ children }: { children: React.ReactNode }) {
       <SuiClientProvider networks={networkConfig} defaultNetwork="testnet">
         <RegisterEnokiWallets />
           <WalletProvider autoConnect>
-            {children}
+            <KioskProvider>
+              {children}
+            </KioskProvider>
           </WalletProvider>
       </SuiClientProvider>
     </QueryClientProvider>
