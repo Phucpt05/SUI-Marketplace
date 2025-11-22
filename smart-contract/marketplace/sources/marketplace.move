@@ -63,28 +63,6 @@ module marketplace::nft_marketplace {
         price: u64,
     }
 
-    public struct BidCreated has copy, drop {
-        object_id: ID,
-        nft_id: ID,
-        creator: address,
-        price: u64,
-    }
-
-    public struct BidCancelled has copy, drop {
-        object_id: ID,
-        nft_id: ID,
-        creator: address,
-        price: u64,
-    }
-
-    public struct AcceptBid has copy, drop {
-        object_id: ID,
-        nft_id: ID,
-        creator: address,
-        seller: address,
-        price: u64,
-    }
-
     // === Structs ===
 
     public struct TestnetNFT has key, store {
